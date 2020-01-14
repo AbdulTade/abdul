@@ -41,11 +41,11 @@ while(true){
        firstNum = round(Math.random()*100);
        secondNum = round(Math.random*100);
        opNum = round(Math.random()*3);
-       num1Tag.innerHTML = String(firstNum);
-       opNumTag.innerHTML = operators[opNum];
-       num2Tag.innerHTML = String(secondNum);
+       num1Tag.innerText = String(firstNum);
+       opNumTag.innerText = operators[opNum];
+       num2Tag.innerText = String(secondNum);
 
-       button.addEventListener('onclick',() => {
+       button.addEventListener('click',() => {
            var solution = answer.value;
            funcJson = {
 
@@ -69,7 +69,11 @@ while(true){
        i += 1;
  
      
-    alert(`You scored ${score}/${numQuestions}`);
+    
+
+       });
+
+       alert(`You scored ${score}/${numQuestions}`);
     var boolRes = confirm("Do you want to try again y/n ");
     if(boolRes == true){
         continue;
@@ -78,9 +82,6 @@ while(true){
         boolRes == false;
         window.close();
     }
-    
-       });
 
-       
 }
 }
