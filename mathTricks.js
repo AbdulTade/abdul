@@ -1,7 +1,7 @@
 var numQuestions;
-window.onload = () => {
-    var numQuestions = parseInt(prompt("Enter the number questions you want to answer "));
-}
+// window.onload = () => {
+    var numQuestions = Number(prompt("Enter the number questions you want to answer "));
+// }
 var num1Tag = document.getElementById('num1');
 var opNumTag = document.getElementById('operator');
 var num2Tag = document.getElementById('num2');
@@ -34,15 +34,20 @@ var divide = (num1,num2) => {
     return val;
 }
 
+
+
 while(true){
+
     var i = 0;
     var score = 0;
     while(i < numQuestions){
-       firstNum = round(Math.random()*100);
-       secondNum = round(Math.random*100);
+
+       firstNum = Math.round(Math.random()*100);
+       secondNum = Math.round(Math.random*100);
        opNum = round(Math.random()*3);
        num1Tag.innerText = String(firstNum);
        opNumTag.innerText = operators[opNum];
+    opNumTag.innerText = '+';
        num2Tag.innerText = String(secondNum);
 
        button.addEventListener('click',() => {
@@ -57,6 +62,10 @@ while(true){
         }
  
         var result = funcJson[operators[opNum]];
+
+        // var result = add(firstNum,secondNum);
+
+        
  
         if(solution === result){
             score++;
@@ -64,14 +73,15 @@ while(true){
  
         else {
             alert(`Incorrect. Correct answer: ${result}`);
- 
+             
         }
        i += 1;
  
      
     
 
-       });
+       });// var operators = new Array(['+','-','*','/']);
+
 
        alert(`You scored ${score}/${numQuestions}`);
     var boolRes = confirm("Do you want to try again y/n ");
@@ -79,8 +89,8 @@ while(true){
         continue;
     }
     else {
-        boolRes == false;
         window.close();
+        break;
     }
 
 }

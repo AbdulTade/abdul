@@ -1,4 +1,8 @@
-var vec3 = require('./vector');
 
-var v3 = new vec3([4,8,3]);
-console.log(v3.dot([2,3,3]));
+
+var str = 'h'
+var num = parseInt(str);
+var num1 = Number(str);
+
+console.log(num);
+console.log(num1);
