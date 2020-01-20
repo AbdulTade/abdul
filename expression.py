@@ -16,6 +16,7 @@ cos = math.cos
 sin = math.sin
 tan = math.tan
 pi = math.pi
+sqrt = math.sqrt
 
 class differentiate:
 
@@ -64,6 +65,34 @@ class integrate:
             i+=1
 
         return Areasum
+
+
+class complex_number:
+
+    def __init__(self,Re,Im):
+
+        self.Re = Re
+        self.Im = Im
+
+    def modulus(self):
+
+        return sqrt(self.Re**2 + self.Im**2)
+
+    def argz(self):
+
+        return math.atan(self.Im/self.Re)
+
+    def conjugate(self):
+        
+        print('({},{})'.format(self.Re,self.Im))
+        return complex_number(self.Re,-self.Im)
+
+    def polar(self):
+
+        val = tuple(self.modulus(),self.argz())
+        return val
+
+
 
     
 
