@@ -46,7 +46,7 @@ while(True):
         firstNum = random.randint(-100,100)
         secondNum = random.randint(-100,100)
         opNum = random.randint(0,3)
-        print("{}) {} {} {} = ".format(i+1,firstNum,operators[opNum],secondNum))
+        print("{}. {} {} {} = ".format(i+1,firstNum,operators[opNum],secondNum))
         answer = float(input(""))
 
         funcDict = {'+' : add(firstNum,secondNum),
