@@ -2,11 +2,6 @@ var numQuestions;
 // window.onload = () => {
     var numQuestions = Number(prompt("Enter the number questions you want to answer "));
 // }
-var num1Tag = document.getElementById('num1');
-var opNumTag = document.getElementById('operator');
-var num2Tag = document.getElementById('num2');
-var button = document.getElementById('button');
-var answer = document.getElementById('answer');
 
 var operators = new Array(['+','-','*','/']);
 
@@ -51,6 +46,20 @@ while(true){
        num2Tag.innerText = String(secondNum);
 
        button.addEventListener('click',() => {
+        var num1Tag = document.getElementById('num1');
+        var opNumTag = document.getElementById('operator');
+        var num2Tag = document.getElementById('num2');
+        var button = document.getElementById('button');
+        var answer = document.getElementById('answer');
+
+        firstNum = Math.round(Math.random()*100);
+       secondNum = Math.round(Math.random*100);
+       opNum = round(Math.random()*3);
+       num1Tag.innerText = String(firstNum);
+       opNumTag.innerText = operators[opNum];
+    //    opNumTag.innerText = '+';
+       num2Tag.innerText = String(secondNum);
+        
            var solution = answer.value;
            funcJson = {
 
