@@ -6,3 +6,4 @@ videos/
 *.jpg
 *.cpp
 computational_cpp/
+*.ipynb
