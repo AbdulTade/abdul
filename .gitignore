@@ -1,6 +1,6 @@
 *.json
 __pycache__/
-testPictures
+testPictures/
 *.exe
-vidoes
+vidoes/
 *.jpg
