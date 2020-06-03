@@ -1339,14 +1339,6 @@ def projectile(u=0,theta=math.pi/6):
 
 
 
-
-
-
-
-
-    
-
-
 def nPredict(n,tvector,yvector):
      """ 
     
@@ -1416,8 +1408,6 @@ def wholeNumberDetector(num1,num2):
 
 
 
-
-
 class fraction:
 
     def __init__(self,numerator,denominator):
@@ -1483,27 +1473,30 @@ def argmax(vector):
     return newVector
 
 
-    def softmax(array,base=np.exp(1)):
-        array = np.array(array)
-        arrlen = len(array)
-        basePowerSum = np.sum(base**(array))
-        returnArr = base**array/basePowerSum
+def softmax(array,base=np.exp(1)):
 
-        return returnArr
+    array = np.array(array)
+    arrlen = len(array)
+    basePowerSum = np.sum(base**(array))
+    returnArr = base**array/basePowerSum
+    return returnArr
 
 
 def Relu(vector):
-    return np.maximum(vector,0)
+    v = np.array(vector)
+    return np.maximum(v,0)
 
 def LeakyRelu(vector,alpha=0.0):
-    where = np.where(np.array(vector) <= 0)
-    newVector = np.copy(np.array(vector))
-    print(newVector)
-    for j in range(len(where[0])):
-        index = where[0][j]
-        newVector[index] = alpha * newVector[index]
+    v = np.array(vector)
+    return np.maximum(v,alpha*v)
 
-    return newVector
+def tanh(vector):
+    v = np.array(vector)
+    return np.tanh(v)
+
+def sigmoid(vector):
+    v = np.array(vector)
+    return 1/(1 + np.exp(-v))
 
 
 
