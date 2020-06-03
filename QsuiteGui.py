@@ -1377,22 +1377,6 @@ def nPredict(n,tvector,yvector):
 
      return x
 
-
-def HadamardProduct(mat1,mat2):
-
-    mat1 = np.array(mat1)
-    mat2 = np.array(mat2)
-    k,j = (0,0)
-    comparison = np.array(mat1.shape) == np.array(mat2.shape)
-    arrshape = mat1.shape
-    if(len(arrshape) != 2):
-        arrshape = list(arrshape)
-        arrshape.append(1)
-    arrshape = tuple(arrshape)
-    if(comparison.all()):
-        result = mat1*mat2
-    return result
-
     
 def gravity(accleration,initialHeight):
 
@@ -1421,5 +1405,106 @@ def rms(iterable,dtype=float):
     iterable = np.array(iterable)
     sumSquares = np.sum(iterable**2)
     return math.sqrt(sumSquares/len(iterable))
+
+def wholeNumberDetector(num1,num2):
+    wholeNum = int(str(num1/num2).split('.')[0])
+    remainder = (num1/num2) - wholeNum
+    if(remainder > 0):
+        return wholeNum
+    else:
+        return [num1,num2]
+
+
+
+
+
+class fraction:
+
+    def __init__(self,numerator,denominator):
+
+        gcd = math.gcd(numerator,denominator)
+        self.n = int(numerator/gcd)
+        self.d = int(denominator/gcd)
+
+    def __repr__(self):
+        return'{}/{}'.format(self.n,self.d)
+
+    def __add__(self,fractionObject):
+        if(fractionObject.d == self.d):
+            num = self.n + fractionObject.n
+            den = self.d
+            gcd = math.gcd(num,den)
+            return fraction(int(num/gcd),int(den/gcd))
+        else:
+            den = self.d * fractionObject.d
+            num = (self.d * fractionObject.n) + (self.n * fractionObject.d)
+            gcd = math.gcd(num,den)
+            return fraction(int(num/gcd),int(den/gcd))
+
+    def __mul__(self,fractionObject):
+        den = self.d * fractionObject.d
+        num = self.n * fractionObject.n
+        gcd = math.gcd(den,num)
+        return fraction(int(num/gcd),int(den/gcd))
+
+    def __truediv__(self,fractionObject):
+        num = fractionObject.d * self.n
+        den = fractionObject.n * self.d
+        gcd = math.gcd(num,den)
+        return fraction(int(num/gcd),int(den/gcd))
+
+    def __pow__(self,power):
+
+        if(str(type(power)) != "<class 'int'>"):
+            print("Type {} is not supported ".format(type(power)))
+            return None
+
+        else:
+            return fraction(self.n**power,self.d**power)
+
+
+def argmax(vector):
+    
+    v = np.array(vector)
+    newVector = np.zeros(len(v))
+    maxValue = np.max(v)
+    where = np.where(v == np.max(v))
+    whereLen = len(where[0])
+
+    for k in range(len(v)):
+
+        if(v[k] == maxValue):
+            newVector[k] = 1/whereLen
+            
+        elif(v[k] != maxValue):
+            newVector[k] = 0
+       
+
+    return newVector
+
+
+    def softmax(array,base=np.exp(1)):
+        array = np.array(array)
+        arrlen = len(array)
+        basePowerSum = np.sum(base**(array))
+        returnArr = base**array/basePowerSum
+
+        return returnArr
+
+
+def Relu(vector):
+    return np.maximum(vector,0)
+
+def LeakyRelu(vector,alpha=0.0):
+    where = np.where(np.array(vector) <= 0)
+    newVector = np.copy(np.array(vector))
+    print(newVector)
+    for j in range(len(where[0])):
+        index = where[0][j]
+        newVector[index] = alpha * newVector[index]
+
+    return newVector
+
+
 
 
